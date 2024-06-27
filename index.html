@@ -12,33 +12,25 @@
             padding: 0;
         }
 
-        /* .home {
-            border: 6px solid black;
-            width: 60%;
-            height: 50%;
-            position: relative;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+        .light {
+            opacity: 0;
         }
 
-        .enter {
-            border: 6px solid black;
-            position: relative;
-            height: 10%;
-            width: 20%;
-            bottom: -30%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        } */
+        .alarm {
+            background-color: white;
+        }
     </style>
 </head>
 
 <body>
     <div
-        style="width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #eee8e8;">
-        <div style="width: 60%; height: 80%; background-color: #fff; position: absolute; ">
-            <img src="https://drive.google.com/file/d/1O2l6dQhfCRQbcwKyPy7l4d7k4Gjzogem/view?usp=sharing" alt="">
+        style="width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #eee8e8;  position: relative; ">
+        <div class="alarm"
+            style="width: 60%; height: 80%; display: flex; align-items: center; justify-content: center; ">
+            <div class="light"
+                style="background-color: black;position: absolute; top: 210px; left: 650px; height: 55%; width: 20%;">
+            </div>
+            <img src="https://github.com/kvantitpd/camp/blob/master/plan.jpg?raw=true" style="height: 90%;" alt="">
         </div>
 
         <script src="./main.js"></script>
