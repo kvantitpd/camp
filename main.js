@@ -1,8 +1,23 @@
-const light = 100;
-const signal = 0;
-
-async function start() {
-    const data = await fetch('http://192.168.10.86:8080/info').then(res => res.json()).then(console.log)
+async function getData() {
+    const data = await fetch('http://192.168.10.86:8080/info').then(res => res.json())//.then(console.log)
+    return data;
 }
 
-start()
+
+setInterval(async () => {
+    const value = await getData();
+    setOpacity();
+    if (value) {
+
+    }
+
+}, 1000);
+
+function setOpacity() {
+    const backGround = document.querySelector(".light");
+    backGround.style.opacity = 1;
+}
+
+
+
+

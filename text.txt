@@ -4,10 +4,23 @@ eth.setIP();
 print(`IP to connection: ${eth.getIP().ip}`);
 
 const light_sensor = require('https://js.amperka.ru/modules/@amperka/light-sensor.js').connect(A0);
+const temperature = require('https://js.amperka.ru/modules/@amperka/thermometer.js').connect(A1);
+const pot = require('https://js.amperka.ru/modules/@amperka/pot.js').connect(A2);
+const btn = require('https://js.amperka.ru/modules/@amperka/button.js')
+  .connect(P4, {
+  });
 
 const data = {
   'light': null,
+  'temp': null,
+  'pot': null,
+  'btn': false,
 };
+
+btn.on('press', function() {
+  data.btn = !data.btn;
+});
+
 
 const http = require("http");
 http.createServer((req, res) => {
@@ -30,5 +43,19 @@ http.createServer((req, res) => {
 
 
  setInterval(function() {
-    data.light = light_sensor.read('lx').toFixed(0);
+   data.light = light_sensor.read('lx').toFixed(0);
+   data.temp = temperature.read('C').toFixed(1);
+   data.pot = potValue();
+   // print(data);
   }, 1000);
+
+function potValue(){
+  const value = pot.read().toFixed(1);
+  if (value == '0.0'){
+    return '0';
+  }
+  if (value == '0.9'){
+    return '1';
+  }
+  return value;
+}
